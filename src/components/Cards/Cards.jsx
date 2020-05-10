@@ -9,7 +9,7 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
   if (!confirmed) {
     return "Loading..";
   }
-  console.log(lastUpdate);
+
   var currDate = new Date(lastUpdate);
 
   return (
