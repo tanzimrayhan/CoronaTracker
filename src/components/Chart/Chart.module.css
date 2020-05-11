@@ -1,8 +1,14 @@
 .container{
     display: flex;
     justify-content: center;
-    width: 60%;
+    width: 50%;
    
+}
+.chart{
+  display: flex;
+    justify-content: center;
+    width: 60%;
+    
 }
 
 @media  (max-width: 770px) {

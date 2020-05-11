@@ -31,8 +31,15 @@ const Chart = ({ data: { confirmed, recovered, deaths }, country }) => {
           borderColor: 'red',
           backgroundColor: 'rgba(255,0,0,0.5)',
           fill: true,
-        }, {}],
+
+        }],
+
       }}
+
+      options={{
+        maintainAspectRatio: false
+      }}
+
     />) : null
   )
 
@@ -53,14 +60,18 @@ const Chart = ({ data: { confirmed, recovered, deaths }, country }) => {
           }}
           options={{
             legend: { display: false },
-            title: { display: true, text: `Current state in ${country}` }
+            title: { display: true, text: `Current state in ${country}` },
+            maintainAspectRatio: false
           }}
         />
       ) : null
   )
 
+
+
   return (
     <div className={styles.container} style={{ height: "300px" }}>
+
       {country ? barChart : lineChart}
 
     </div>
