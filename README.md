@@ -1,5 +1,5 @@
 ### Check out the project ###
-### [CovidTracker](master.d9hpcn61jw2oo.amplifyapp.com) ###
+## Click on this link to go to the project ## -> ### [CovidTracker](master.d9hpcn61jw2oo.amplifyapp.com) ###
 
 
 
