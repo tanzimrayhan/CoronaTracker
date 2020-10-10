@@ -12,70 +12,65 @@ const Chart = ({ data: { confirmed, recovered, deaths }, country }) => {
       setDailyData(await fetchDailyData());
     };
 
-
     fetchApi();
   }, []);
 
-  const lineChart = (
-    dailyData.length !== 0 ? (<Line
+  const lineChart =
+    dailyData.length !== 0 ? (
+      <Line
+        data={{
+          labels: dailyData.date,
+          datasets: [
+            {
+              data: dailyData.confirmed.value,
+              label: "Infected",
+              borderColor: "#3333ff",
+              fill: true,
+            },
+            {
+              data: dailyData.deaths.value,
+              label: "Deaths",
+              borderColor: "red",
+              backgroundColor: "rgba(255,0,0,0.5)",
+              fill: true,
+            },
+          ],
+        }}
+        options={{
+          maintainAspectRatio: false,
+        }}
+      />
+    ) : null;
+
+  const barChart = confirmed ? (
+    <Bar
       data={{
-        labels: dailyData.map(({ date }) => date),
-        datasets: [{
-          data: dailyData.map(({ confirmed }) => confirmed),
-          label: 'Infected',
-          borderColor: '#3333ff',
-          fill: true,
-        }, {
-          data: dailyData.map(({ deaths }) => deaths),
-          label: 'Deaths',
-          borderColor: 'red',
-          backgroundColor: 'rgba(255,0,0,0.5)',
-          fill: true,
-
-        }],
-
+        labels: ["Infected", "Recovered", "Deaths"],
+        datasets: [
+          {
+            label: "People",
+            backgroundColor: [
+              "rgba(0, 0, 255, 0.5)",
+              "rgba(0, 255, 0, 0.5)",
+              "rgba(255, 0, 0, 0.5)",
+            ],
+            data: [confirmed.value, recovered.value, deaths.value],
+          },
+        ],
       }}
-
       options={{
-        maintainAspectRatio: false
+        legend: { display: false },
+        title: { display: true, text: `Current state in ${country}` },
+        maintainAspectRatio: false,
       }}
-
-    />) : null
-  )
-
-  const barChart = (
-    confirmed
-      ? (
-        <Bar
-          data={{
-            labels: ['Infected', 'Recovered', 'Deaths'],
-            datasets: [{
-              label: 'People',
-              backgroundColor: ['rgba(0, 0, 255, 0.5)',
-                'rgba(0, 255, 0, 0.5)',
-                'rgba(255, 0, 0, 0.5)'
-              ],
-              data: [confirmed.value, recovered.value, deaths.value],
-            }]
-          }}
-          options={{
-            legend: { display: false },
-            title: { display: true, text: `Current state in ${country}` },
-            maintainAspectRatio: false
-          }}
-        />
-      ) : null
-  )
-
-
+    />
+  ) : null;
 
   return (
     <div className={styles.container} style={{ height: "300px" }}>
-
       {country ? barChart : lineChart}
-
     </div>
-  )
+  );
 };
 
 export default Chart;
