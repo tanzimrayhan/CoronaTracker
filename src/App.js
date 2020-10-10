@@ -5,7 +5,7 @@ import styles from "./App.module.css";
 import Cards from "./components/Cards/Cards";
 import Chart from "./components/Chart/Chart";
 import CountryChooser from "./components/CountryChooser/CountryChooser";
-import { fetchData, fetchDailyData } from "./api";
+import { fetchData } from "./api";
 
 class App extends React.Component {
   state = {
@@ -16,7 +16,7 @@ class App extends React.Component {
   async componentDidMount() {
     const fetchedData = await fetchData();
 
-    this.setState({ data: fetchedData });
+    this.setState({ data: fetchedData, country: "global" });
   }
 
   handleCountryChange = async (country) => {
@@ -28,7 +28,7 @@ class App extends React.Component {
   };
 
   render() {
-    const { data, country, fetchDdata } = this.state;
+    const { data, country } = this.state;
     return (
       <div className={styles.container}>
         <CountryChooser handleCountryChange={this.handleCountryChange} />
