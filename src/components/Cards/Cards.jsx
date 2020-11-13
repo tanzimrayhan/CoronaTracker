@@ -82,7 +82,7 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
               {currDate.toLocaleTimeString()}
             </Typography>
             <Typography variant="body2">
-              Number of deaths cause by Corona
+              Number of deaths caused by Corona
             </Typography>
           </CardContent>
         </Grid>
