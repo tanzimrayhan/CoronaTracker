@@ -1,12 +1,7 @@
 ### Check out the project ###
-## Click on this link to go to the project->   ### [CovidTracker](https://www.covidgraph.tk/) ###
 
 
 
-
-
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
